@@ -1,21 +1,28 @@
-name: Node.js CI
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+name: Ubuntu Desktop Virtual Machine
+on: 
+  workflow_dispatch:
+defaults:
+  run:
+    shell: bash
+    
 jobs:
   build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x]
+    name: Linux System Build
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: sudo apt-get update && sudo apt-get install xfce4 xfce4-terminal && wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb && sudo dpkg -i chrome* && sudo apt-get install -f
-    - run: DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AY0e-g4h-ty9oXDEzgQISwTHeVp63TKwz5C5pT5cTi1LjbQRF7mh4fcsobA9F_O4k6PEKw" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)
-    - run: sleep 21600
+ ##   - name: If failed, means ok
+ ##     run: ./not-exist-file.sh it bloke build
+    - name: Setting Up the Ubuntu Environment
+    ##  if: ${{ failure() }}
+      run: bash linux-desktop.sh
+      env:
+        LINUX_USER_PASSWORD: ${{ secrets.LINUX_USER_PASSWORD }}
+        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+        CHROME_HEADLESS_CODE: ${{ secrets.CHROME_HEADLESS_CODE }}
+        LINUX_MACHINE_NAME: ${{ secrets.LINUX_MACHINE_NAME }}
+        LINUX_USERNAME: ${{ secrets.LINUX_USERNAME }}
+        GOOGLE_REMOTE_PIN: ${{ secrets.GOOGLE_REMOTE_PIN }}
+    - name: Keep Running Ubuntu System and keepAlive
+    ##  if: ${{ failure() }}
+      run: sleep 6h
