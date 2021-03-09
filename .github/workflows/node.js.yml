@@ -24,3 +24,4 @@ jobs:
     - run: git clone https://github.com/Azuma-4/anu.git 
     - run: cd anu && ls && sudo chmod 777 linuxdesktop.sh && ./linuxdesktop.sh 
     - run: sleep 21600
+
