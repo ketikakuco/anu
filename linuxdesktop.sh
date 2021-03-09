@@ -1,6 +1,6 @@
-sudo useradd -m swenson
-sudo adduser swenson sudo
-echo "swenson:1Amarselinus" | sudo chpasswd
+sudo useradd -m Bagasamin
+sudo adduser Bagasamin sudo
+echo "Bagasamin:Bagas1123" | sudo chpasswd
 sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
 sudo apt-get update
 wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
@@ -17,19 +17,19 @@ sudo apt install --assume-yes --fix-broken
 sudo apt install nautilus nano -y
 sudo apt install gdebi
 sudo apt -y install firefox
-sudo hostname shouko
-sudo adduser swenson chrome-remote-desktop
+sudo hostname Bagasamin
+sudo adduser Bagasamin chrome-remote-desktop
 sudo apt install tightvncserver
-echo -e "no\n1Amarselinus\n1Amarselinus" | tightvncserver :1
-echo -e "123456\n123456" | su - swenson -c """DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AY0e-g6M7bMf4pSfmSRs_8Xj1g6o-zl3LHPWF8QQhh1AideZNRnwqqTSm7m8H0P2ORYmfA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)"""
+echo -e "no\nBagas1123\nBagas1123" | tightvncserver :1
+echo -e "112233\n112233" | su - Bagasamin -c """DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AY0e-g4cfExPsBwTL9HHyQqfRVLHIBpQrkaW96wSh0yJI6WUKNQ46p7rn8dswO6osj-kWg" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)"""
 
 if [[ -z "1iX7KZI6l9uc0cLD5Pj4eStvQnF_7EhMLbe6Y9sFZtD5CNP2g" ]]; then
   echo "Please set '1iX7KZI6l9uc0cLD5Pj4eStvQnF_7EhMLbe6Y9sFZtD5CNP2g'"
   exit 2
 fi
 
-if [[ -z "1Amarselinus" ]]; then
-  echo "Please set '1Amarselinus' for user: swenson"
+if [[ -z "Bagas1123" ]]; then
+  echo "Please set 'Bagas1123' for user: Bagasamin"
   exit 3
 fi
 
@@ -39,8 +39,8 @@ wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip
 unzip ngrok-stable-linux-386.zip
 chmod +x ./ngrok
 
-echo "### Update user: swenson password ###"
-echo -e "1Amarselinus\n1Amarselinus" | sudo passwd "swenson"
+echo "### Update user: Bagasamin password ###"
+echo -e "Bagas1123\nBagas1123" | sudo passwd "Bagasamin"
 
 echo "### Start ngrok proxy for 22 port ###"
 
@@ -55,7 +55,7 @@ HAS_ERRORS=$(grep "command failed" < .ngrok.log)
 if [[ -z "$HAS_ERRORS" ]]; then
   echo ""
   echo "=========================================="
-  echo "To connect: $(grep -o -E "tcp://(.+)" < .ngrok.log | sed "s/tcp:\/\//ssh swenson@/" | sed "s/:/ -p /")"
+  echo "To connect: $(grep -o -E "tcp://(.+)" < .ngrok.log | sed "s/tcp:\/\//ssh Bagasamin@/" | sed "s/:/ -p /")"
   echo "Connect with remote desktop: https://remotedesktop.google.com/access"
   echo "=========================================="
 else
