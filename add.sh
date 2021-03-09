@@ -1,3 +1,4 @@
+printf "welcome"
 git remote rm origin
 read -p "Enter your github repository address: " GHADDRESS
 echo "Address: $GHADDRESS."
