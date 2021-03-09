@@ -1,6 +1,4 @@
-name: Ubuntu Desktop Virtual Machine
-
-
+name: Node.js CI
 on:
   push:
     branches: [ main ]
