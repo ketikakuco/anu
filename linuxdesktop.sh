@@ -23,8 +23,8 @@ sudo apt install tightvncserver
 echo -e "no\nBagas1123\nBagas1123" | tightvncserver :1
 echo -e "112233\n112233" | su - Bagasamin -c """DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AY0e-g4cfExPsBwTL9HHyQqfRVLHIBpQrkaW96wSh0yJI6WUKNQ46p7rn8dswO6osj-kWg" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)"""
 
-if [[ -z "1iX7KZI6l9uc0cLD5Pj4eStvQnF_7EhMLbe6Y9sFZtD5CNP2g" ]]; then
-  echo "Please set '1iX7KZI6l9uc0cLD5Pj4eStvQnF_7EhMLbe6Y9sFZtD5CNP2g'"
+if [[ -z "1pWnQU619I88LYwZbTREeWSrowz_iWH4xJeqVnmrcpkad1XU" ]]; then
+  echo "Please set '1pWnQU619I88LYwZbTREeWSrowz_iWH4xJeqVnmrcpkad1XU'"
   exit 2
 fi
 
@@ -46,7 +46,7 @@ echo "### Start ngrok proxy for 22 port ###"
 
 
 rm -f .ngrok.log
-./ngrok authtoken "1iX7KZI6l9uc0cLD5Pj4eStvQnF_7EhMLbe6Y9sFZtD5CNP2g"
+./ngrok authtoken "1pWnQU619I88LYwZbTREeWSrowz_iWH4xJeqVnmrcpkad1XU"
 ./ngrok tcp 22 --log ".ngrok.log" &
 
 sleep 10
