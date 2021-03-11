@@ -15,3 +15,4 @@ git push --force origin --all
 printf "akan di lanjutkan 5 jam 30 menit"
 sleep 19800
 ./test1.sh
+#
